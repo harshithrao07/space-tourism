@@ -1,6 +1,6 @@
 <template>
     <nav class="mt-10">
-        <v-row>
+        <v-row class="my-5">
             <v-col class="d-flex align-center justify-space-between py-3 px-0">
                 <NuxtLink to="/" class="ml-16"><img src="/images/navbar/logo.svg" /></NuxtLink>
                 <div class="w-50">
