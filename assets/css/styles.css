@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #0B0D17;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    color: white;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+h1, h2, h3, h4, .subheading-1{
+    font-family: 'Bellefair', serif;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 150px;
+}
+
+h2 {
+    font-size: 100px;
+}
+
+h3 {
+    font-size: 56px;
+}
+
+h4 {
+    font-size: 32px;
+}
+
+h5, .subheading-2, .nav-text{
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+h5, .subheading-1{
+    font-size: 28px;
+}
+
+h5 {
+    letter-spacing: 4.75px;
+}
+
+p {
+    font-family: 'Barlow', sans-serif;
+    font-size: 18px;
+    color: #D0D6F9;
+    line-height: 1.7;
+}
+
+.subheading-2 {
+    font-size: 14px;
+    letter-spacing: 2.35px;
+    color: #D0D6F9;
+}
+
+.nav-text {
+    font-size: 16px;
+    letter-spacing: 2.7px;
+}
+
+.numbers {
+    color: gray;
+    font-weight: bold;
+}
+
+/* @media only screen and (min-width:2400px) {
+    h1 {
+        font-size: 5rem;
+    }
+
+    p {
+        font-size: 2.3rem;
+    }
+}
+
+@media only screen and (max-width:1919px) and (min-width:1600px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media only screen and (max-width:1599px) and (min-width:1366px) {
+    h1 {
+        font-size: 2.3rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (max-width:1365px) and (min-width:1280px) {
+    h1 {
+        font-size: 2.1rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width:1279px) and (min-width:1024px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width:1023px) and (min-width:600px) {
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width:599px) and (min-width:300px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (max-width:299px) {
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    p {
+        font-size: 0.7rem;
+    }
+} */
