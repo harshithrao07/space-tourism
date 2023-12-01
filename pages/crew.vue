@@ -1,5 +1,5 @@
 <template>
-    <div class="main-section">
+    <div class="main-section ma-0">
         <Navbar />
         <v-container class="mt-10 pa-0">
             <h5><span class="numbers">02</span>&nbsp;&nbsp;MEET YOUR CREW</h5>
@@ -13,7 +13,8 @@
                     <div>
                         <v-row class="w-25 mt-16">
                             <v-col v-for="(item, index) in crew" :key="index" @click="setActiveStep(index)">
-                                <v-img src="/images/crew/Oval.svg" width="100%"></v-img>
+                                <v-img v-if="activeStep == index" src="/images/crew/Oval.svg" width="100%" style="cursor: pointer;"></v-img>
+                                <v-img v-else :src="getOvalSource(index)" style="cursor: pointer;" @mouseover="handleMouseOver(index)" @mouseleave="handleMouseLeave()" width="100%"></v-img>
                             </v-col>
                         </v-row>
                     </div>
@@ -62,9 +63,30 @@ let selectedCrew = ref(
         "bio": "Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2."
     }
 )
-
+let activeStep = ref(0)
 let setActiveStep = (stepNumber) => {
+    activeStep.value = stepNumber
     selectedCrew.value = crew[stepNumber]
+}
+
+let hoverState = ref(false)
+let hoverStep = ref(null)
+
+let handleMouseOver = (index) => {
+    hoverStep.value = index
+    hoverState.value = true
+}
+
+let handleMouseLeave = (index) => {
+    hoverState.value = false
+    hoverStep.value = null
+}
+
+let grayOval = "/images/crew/Oval-gray.svg"
+let hoverOval = "/images/crew/Oval-hover.svg"
+
+let getOvalSource = (index) => {
+    return hoverStep.value === index ? hoverOval : grayOval;
 }
 </script>
 
@@ -79,4 +101,5 @@ let setActiveStep = (stepNumber) => {
 h4 {
     color: gray;
 }
+
 </style>

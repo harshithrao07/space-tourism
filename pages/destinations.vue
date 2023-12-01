@@ -7,11 +7,18 @@
                 <v-col>
 
                 </v-col>
-                <v-col class="d-flex">
+                <v-col class="d-flex pa-0">
                     <div v-for="(item, index) in destinations" :key="index">
-                        <nav class="mr-10" @click="setActiveStep(index)">
-                            <span class="nav-text">{{ item.name.toLocaleUpperCase() }}</span>
-                        </nav>
+                        <div v-if="activeStep == index" class="h-100 mr-10 pb-2 active">
+                            <nav @click="setActiveStep(index)">
+                                <span class="nav-text" style="cursor: pointer;">{{ item.name.toLocaleUpperCase() }}</span>
+                            </nav>
+                        </div>
+                        <div v-else class="h-100 mr-10 pb-2" :class="{hover: mouseHover && hoverStep == index}">
+                            <nav @click="setActiveStep(index)" @mouseover="handleMouseOver(index)" @mouseleave="handleMouseLeave()">
+                                <span class="nav-text not-active" style="cursor: pointer;">{{ item.name.toLocaleUpperCase() }}</span>
+                            </nav>
+                        </div>
                     </div>
                 </v-col>
             </v-row>
@@ -67,7 +74,7 @@ let destinations = [
     {
         "name": "Titan",
         "image": "./images/destination/image-titan.png",
-        "description": "The only moon known to have a dense atmosphere other than Earth, Titan is a home away from home (just a few hundred degrees colder!). As a bonus, you get striking views of the Rings of Saturn.",
+        "description": "Titan's name comes from Greek mythology. The only moon known to have a dense atmosphere other than Earth, Titan is a home away from home (just a few hundred degrees colder!). As a bonus, you get striking views of the Rings of Saturn.",
         "distance": "1.6 bil. km",
         "travel": "7 years"
     }
@@ -83,8 +90,23 @@ let selectedDestination = ref(
     }
 )
 
+let activeStep = ref(0)
+
 let setActiveStep = (stepNumber) => {
+    activeStep.value = stepNumber
     selectedDestination.value = destinations[stepNumber];
+}
+
+let mouseHover = ref(false) 
+let hoverStep = ref(null)
+
+let handleMouseOver = (index) => {
+    hoverStep.value = index
+    mouseHover.value = true
+}
+
+let handleMouseLeave = () => {
+    mouseHover.value = false
 }
 </script>
 
@@ -94,5 +116,14 @@ let setActiveStep = (stepNumber) => {
     background-repeat: no-repeat;
     background-position: 100% 100%;
     background-size: cover;
+}
+
+.active {
+    border-bottom: 3px solid white;
+}
+
+
+.hover {
+    border-bottom: 3px solid #acacb0;;
 }
 </style>

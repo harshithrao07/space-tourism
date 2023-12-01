@@ -3,7 +3,7 @@
         <Navbar />
         <v-container class="my-16">
             <v-row>
-                <v-col>
+                <v-col md="12" lg="6" sm="12" xs="12" cols="12">
                     <h5>
                         SO, YOU WANT TO TRAVEL TO
                     </h5>
@@ -20,9 +20,14 @@
                         </p>
                     </div>
                 </v-col>
-                <v-col class="d-flex align-center justify-center">
-                    <div class="bg-white px-6 py-16 rounded-circle">
-                        <h4 class="black">EXPLORE</h4>
+                <v-col class="d-flex align-center justify-center" md="12" lg="6" sm="12" xs="12" cols="12">
+                    <div :class="{ ripple: mouseHover, rippleLeave: mouseLeaveAfterAnimation }">
+                        <NuxtLink to="/destinations" style="text-decoration: none;">
+                            <div class="bg-white px-6 py-16 rounded-circle" @mouseover="handleMouseOver()"
+                                @mouseleave="handleMouseLeave()">
+                                <h4 class="black">EXPLORE</h4>
+                            </div>
+                        </NuxtLink>
                     </div>
                 </v-col>
             </v-row>
@@ -31,7 +36,15 @@
 </template>
 
 <script setup>
-
+let mouseHover = ref(false)
+let mouseLeaveAfterAnimation = ref(false)
+let handleMouseOver = () => {
+    mouseHover.value = true
+    mouseLeaveAfterAnimation.value = false
+}
+let handleMouseLeave = () => {
+    mouseLeaveAfterAnimation.value = true
+}
 </script>
 
 <style scoped>
@@ -40,10 +53,50 @@
     background-repeat: no-repeat;
     background-position: 100% 100%;
     background-size: cover;
-    min-height: 100vh;
 }
 
 h5 {
     color: #D0D6F9;
+}
+
+.ripple {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 100%;
+    cursor: pointer;
+    animation: rippling 1s forwards;
+}
+
+.rippleLeave {
+    animation: rippleLeaving 0.5s ease-in;
+}
+
+@keyframes rippling {
+    0% {
+        padding: 0%;
+    }
+
+
+    100% {
+        padding: 12%;
+    }
+}
+
+@keyframes rippleLeaving {
+    0% {
+        padding: 12%;
+    }
+
+    100% {
+        padding: 0%;
+    }
+}
+
+
+@media only screen and (max-width:600px) {
+    .main-section {
+        background: url("/images/home/background-home-mobile.jpg");
+    }
 }
 </style>

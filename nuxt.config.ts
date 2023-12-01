@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   app: {
     head: {
-      title: "Space Research",
+      title: "Space Tourism",
       meta: [
         { name: "viewport", content: "width=device-width, initial-scale=1" },
       ],
@@ -14,7 +14,7 @@ export default defineNuxtConfig({
         // <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Bellefair&display=swap" rel = "stylesheet" >
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         { rel: "preconnect", href: "https://fonts.gstatic.com"},
-        { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&display=swap" }
+        { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&display=swap" },
       ]
     },
   },
