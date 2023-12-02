@@ -1,31 +1,32 @@
 <template>
   <div class="main-section">
     <Navbar />
-    <v-container fluid class="my-16 pa-0">
-      <h5 class="ml-16"><span class="numbers ml-16">03</span>&nbsp;&nbsp;SPACE LAUNCH 101</h5>
+    <v-container fluid class="mb-16 mt-10 mt-md-16 pa-2 pa-md-0 mobile-texts">
+      <h5 class="ml-md-16 mb-10 mb-md-0"><span class="numbers ml-md-16">03</span>&nbsp;&nbsp;SPACE LAUNCH 101</h5>
       <v-row v-if="selectedTechnology">
-        <v-col cols="2" class="d-flex flex-column justify-center align-end">
-          <div>
+        <v-col cols="12" order-md="3" md="5" class="pa-0">
+          <v-img class="desktop" :src="selectedTechnology.images.portrait"></v-img>
+          <v-img class="mobile" :src="selectedTechnology.images.landscape"></v-img>
+        </v-col>
+        <v-col cols="12" class="d-flex flex-column justify-center mt-7 mt-md-7 align-end mobile-links-parent" order-md="1" md="2">
+          <div class="mobile-links">
             <div v-for="(item, index) in technology" :key="index">
               <div v-if="activeStep == index" @click="setActiveStep(index)"
-                class="py-4 px-8 rounded-circle my-5 mr-10 bg-white text-black d-flex align-center justify-center" style="border: 1px solid white; cursor: pointer;">
-                <h4>{{ index + 1 }}</h4>
+                class="py-2 px-4 py-md-4 px-md-8 rounded-circle mx-3 my-md-5 mr-md-10 bg-white d-flex align-center justify-center" style="border: 1px solid white; cursor: pointer;">
+                <h4 class="text-black mobile-text-2">{{ index + 1 }}</h4>
               </div>
               <div v-else @click="setActiveStep(index)"
-                class="py-4 px-8 rounded-circle my-5 mr-10 d-flex align-center justify-center navigation" style="cursor: pointer;"
+                class="py-2 px-4 py-md-4 px-md-8 rounded-circle mx-3 my-md-5 mr-md-10 d-flex align-center justify-center navigation" style="cursor: pointer;"
                 :class="{hover: hoverState && hoverStep == index}" @mouseover="handleMouseOver(index)" @mouseleave="handleMouseLeave()" >
-                <h4>{{ index + 1 }}</h4>
+                <h4 class="mobile-text-2">{{ index + 1 }}</h4>
               </div>
             </div>
           </div>
         </v-col>
-        <v-col cols="5" class="d-flex flex-column justify-center">
+        <v-col cols="12" class="d-flex flex-column justify-center" order-md="2" md="5">
           <h5>THE TERMINOLOGY...</h5>
-          <h3 class="mt-1 mb-10">{{ selectedTechnology.name.toLocaleUpperCase() }}</h3>
-          <p class="mr-16">{{ selectedTechnology.description }}</p>
-        </v-col>
-        <v-col cols="5">
-          <v-img :src="selectedTechnology.images.portrait"></v-img>
+          <h3 class="mt-1 mb-10 mobile-text-1">{{ selectedTechnology.name.toLocaleUpperCase() }}</h3>
+          <p class="mr-md-16">{{ selectedTechnology.description }}</p>
         </v-col>
       </v-row>
     </v-container>
@@ -109,4 +110,44 @@ h5 {
 .hover {
   border: 1px solid white;
 }
+
+.mobile {
+  display: none;
+}
+
+@media only screen and (max-width:600px) {
+
+    .main-section {
+      background: url("/images/technology/background-technology-mobile.jpg");
+      background-repeat: no-repeat;
+      background-position: 100% 100%;
+      background-size: cover;
+    }
+    .mobile-links {
+        display: flex;
+    }
+    .mobile-links-parent {
+      align-items: center !important;
+    }
+
+    .mobile-texts {
+      text-align: center;
+    }
+
+    .mobile-text-1 {
+      font-size: 24px;
+    }
+
+    .mobile-text-2 {
+      font-size: 16px;
+    }
+
+    .desktop {
+      display: none;
+    }
+
+    .mobile {
+      display: block;
+    }
+  }
 </style>

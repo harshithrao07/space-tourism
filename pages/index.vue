@@ -1,7 +1,7 @@
 <template>
     <v-container fluid class="main-section pa-0 ma-0">
         <Navbar />
-        <v-container class="my-16">
+        <v-container class="mb-16 mt-10 mobile-texts">
             <v-row>
                 <v-col md="12" lg="6" sm="12" xs="12" cols="12">
                     <h5>
@@ -10,7 +10,7 @@
                     <h1>
                         SPACE
                     </h1>
-                    <div class="mr-12">
+                    <div class="mr-md-12">
                         <p>
                             Let’s face it, if you want to go to space, you might as well genuinely go to outer space and not
                             hover
@@ -20,12 +20,12 @@
                         </p>
                     </div>
                 </v-col>
-                <v-col class="d-flex align-center justify-center" md="12" lg="6" sm="12" xs="12" cols="12">
+                <v-col class="d-flex align-center justify-center mobile-circle-parent" md="12" lg="6" sm="12" xs="12" cols="12">
                     <div :class="{ ripple: mouseHover, rippleLeave: mouseLeaveAfterAnimation }">
                         <NuxtLink to="/destinations" style="text-decoration: none;">
-                            <div class="bg-white px-6 py-16 rounded-circle" @mouseover="handleMouseOver()"
+                            <div class="bg-white px-md-6 py-md-16 mobile-circle rounded-circle" @mouseover="handleMouseOver()"
                                 @mouseleave="handleMouseLeave()">
-                                <h4 class="black">EXPLORE</h4>
+                                <h4 class="text-black">EXPLORE</h4>
                             </div>
                         </NuxtLink>
                     </div>
@@ -53,6 +53,7 @@ let handleMouseLeave = () => {
     background-repeat: no-repeat;
     background-position: 100% 100%;
     background-size: cover;
+    min-height: 100vh;
 }
 
 h5 {
@@ -97,6 +98,15 @@ h5 {
 @media only screen and (max-width:600px) {
     .main-section {
         background: url("/images/home/background-home-mobile.jpg");
+    }
+
+    .mobile-circle {
+        padding-inline: 15px;
+        padding-block: 40px;
+    }
+
+    .mobile-circle-parent {
+        height: 200px;
     }
 }
 </style>

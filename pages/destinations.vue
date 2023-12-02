@@ -1,47 +1,50 @@
 <template>
     <div class="main-section">
         <Navbar />
-        <v-container class="my-10">
+        <v-container class="my-10 mobile-texts">
             <h5><span class="numbers">01</span>&nbsp;&nbsp;PICK YOUR DESTINATION</h5>
-            <v-row class="mt-16">
-                <v-col>
 
+            <v-row v-if="selectedDestination" class="pa-3 mt-3 mt-md-16">
+                <v-col cols="12" md="6" sm="12">
+                    <v-img :src="selectedDestination.image" width="85%" class="mobile-image my-auto"></v-img>
                 </v-col>
-                <v-col class="d-flex pa-0">
-                    <div v-for="(item, index) in destinations" :key="index">
-                        <div v-if="activeStep == index" class="h-100 mr-10 pb-2 active">
-                            <nav @click="setActiveStep(index)">
-                                <span class="nav-text" style="cursor: pointer;">{{ item.name.toLocaleUpperCase() }}</span>
-                            </nav>
+                <v-col class="pa-6" cols="12" md="6" sm="12">
+                    <v-row class="mt-1 mt-md-0">
+                        <v-col class="d-flex pa-0">
+                            <div v-for="(item, index) in destinations" :key="index" class="mobile-links">
+                                <div v-if="activeStep == index" class="h-100 mr-md-5 pb-2 active">
+                                    <nav @click="setActiveStep(index)">
+                                        <span class="nav-text" style="cursor: pointer;">{{ item.name.toLocaleUpperCase()
+                                        }}</span>
+                                    </nav>
+                                </div>
+                                <div v-else class="h-100 mr-md-5 pb-2" :class="{ hover: mouseHover && hoverStep == index }">
+                                    <nav @click="setActiveStep(index)" @mouseover="handleMouseOver(index)"
+                                        @mouseleave="handleMouseLeave()">
+                                        <span class="nav-text not-active" style="cursor: pointer;">{{
+                                            item.name.toLocaleUpperCase() }}</span>
+                                    </nav>
+                                </div>
+                            </div>
+                        </v-col>
+                    </v-row>
+                    <v-row>
+                        <div class="info-texts">
+                            <h2 class="mt-3 mt-md-0">{{ selectedDestination.name.toLocaleUpperCase() }}</h2>
+                            <p class="pr-md-16 mt-3 mt-md-0">{{ selectedDestination.description }}</p>
+                            <v-divider class="mt-12" thickness="2"></v-divider>
+                            <v-row class="mt-6">
+                                <v-col class="d-flex flex-column" cols="12" md="6" sm="12">
+                                    <span class="subheading-2">AVG. DISTANCE</span>
+                                    <span class="subheading-1">{{ selectedDestination.distance.toLocaleUpperCase() }}</span>
+                                </v-col>
+                                <v-col class="d-flex flex-column" cols="12" md="6" sm="12">
+                                    <span class="subheading-2">EST. TRAVEL TIME</span>
+                                    <span class="subheading-1">{{ selectedDestination.travel.toLocaleUpperCase() }}</span>
+                                </v-col>
+                            </v-row>
                         </div>
-                        <div v-else class="h-100 mr-10 pb-2" :class="{hover: mouseHover && hoverStep == index}">
-                            <nav @click="setActiveStep(index)" @mouseover="handleMouseOver(index)" @mouseleave="handleMouseLeave()">
-                                <span class="nav-text not-active" style="cursor: pointer;">{{ item.name.toLocaleUpperCase() }}</span>
-                            </nav>
-                        </div>
-                    </div>
-                </v-col>
-            </v-row>
-            <v-row v-if="selectedDestination">
-                <v-col>
-                    <v-img :src="selectedDestination.image" width="80%" class="mx-0"></v-img>
-                </v-col>
-                <v-col class="pa-0">
-                    <div class="info-texts">
-                        <h1>{{ selectedDestination.name.toLocaleUpperCase() }}</h1>
-                        <p class="pr-16">{{ selectedDestination.description }}</p>
-                        <v-divider class="mt-12" thickness="2"></v-divider>
-                        <v-row class="mt-6">
-                            <v-col class="d-flex flex-column">
-                                <span class="subheading-2">AVG. DISTANCE</span>
-                                <span class="subheading-1">{{ selectedDestination.distance.toLocaleUpperCase() }}</span>
-                            </v-col>
-                            <v-col class="d-flex flex-column">
-                                <span class="subheading-2">EST. TRAVEL TIME</span>
-                                <span class="subheading-1">{{ selectedDestination.travel.toLocaleUpperCase() }}</span>
-                            </v-col>
-                        </v-row>
-                    </div>
+                    </v-row>
                 </v-col>
             </v-row>
         </v-container>
@@ -97,7 +100,7 @@ let setActiveStep = (stepNumber) => {
     selectedDestination.value = destinations[stepNumber];
 }
 
-let mouseHover = ref(false) 
+let mouseHover = ref(false)
 let hoverStep = ref(null)
 
 let handleMouseOver = (index) => {
@@ -124,6 +127,20 @@ let handleMouseLeave = () => {
 
 
 .hover {
-    border-bottom: 3px solid #acacb0;;
+    border-bottom: 3px solid #acacb0;
+    ;
 }
-</style>
+
+@media only screen and (max-width:600px) {
+    .mobile-image {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 5%;
+    }
+
+    .mobile-links {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}</style>

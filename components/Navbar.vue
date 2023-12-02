@@ -1,24 +1,51 @@
 <template>
-    <nav class="mt-10">
-        <v-row class="my-5 pa-0">
-            <v-col class="d-flex align-center justify-space-between pa-0">
-                <img src="/images/navbar/logo.svg" class="ml-16" />
-                <div class="w-50">
-                    <v-divider thickness="2"></v-divider>
-                </div>
-            </v-col>
-            <v-col class="ml-auto d-flex align-center nav-blur pa-0">
-                <div v-for="(item, index) in navItems" :key="index" class="py-6 mx-10">
-                    <NuxtLink :to="item.to" class="links pb-6" :class="{ hover: hoverState && index == hoverStep }"
-                        @mouseover="handleMouseOver(index)" @mouseleave="handleMouseLeave()">
-                        <span class="nav-text">
-                            {{ item.id }}&nbsp;&nbsp;{{ item.name }}
-                        </span>
-                    </NuxtLink>
-                </div>
-            </v-col>
-        </v-row>
-    </nav>
+    <div class="desktop">
+        <nav class="mt-10">
+            <v-row class="my-5 pa-0">
+                <v-col class="d-flex align-center justify-space-between pa-0 ml-16">
+                    <NuxtLink to="/"><img src="/images/navbar/logo.svg" /></NuxtLink>
+                    <div class="w-50 desktop">
+                        <v-divider thickness="2"></v-divider>
+                    </div>
+                </v-col>
+                <v-col class="pa-0">
+                    <div class="nav-blur d-flex align-center">
+                        <div v-for="(item, index) in navItems" :key="index" class="py-6 mx-10 linkParent desktop">
+                            <NuxtLink :to="item.to" class="links pb-6" :class="{ hover: hoverState && index == hoverStep }"
+                                @mouseover="handleMouseOver(index)" @mouseleave="handleMouseLeave()">
+                                <span class="nav-text">
+                                    {{ item.id }}&nbsp;&nbsp;{{ item.name }}
+                                </span>
+                            </NuxtLink>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <v-icon large @click="toggle()" class="mobile" size="50">mdi-menu</v-icon>
+                    </div>
+                </v-col>
+            </v-row>
+        </nav>
+    </div>
+    <div class="mobile">
+        <nav class="mt-7" style="width: 100vw;">
+            <div class="d-flex justify-space-between align-center">
+                <NuxtLink to="/"><img src="/images/navbar/logo.svg" class="ml-4" /></NuxtLink>
+                <v-icon large @click="toggle()" class="mobile mr-4 mb-2" size="40">mdi-menu</v-icon>
+            </div>
+        </nav>
+    </div>
+    <v-navigation-drawer app temporary v-model="drawer" class="nav-blur" location="right">
+        <v-container>
+            <v-img src="/images/navbar/icon-close.svg" width="12%" class="ml-auto" @click.stop="toggle()"></v-img>
+            <v-list-item v-for="(item, index) in navItems" :key="index" class="mt-10">
+                <NuxtLink :to="item.to" class="links">
+                    <span class="nav-text">
+                        <span style="font-weight: bold;">{{ item.id }}</span>&nbsp;&nbsp;{{ item.name }}
+                    </span>
+                </NuxtLink>
+            </v-list-item>
+        </v-container>
+    </v-navigation-drawer>
 </template>
 
 <script setup>
@@ -56,7 +83,13 @@ let handleMouseOver = (index) => {
 let handleMouseLeave = () => {
     hoverState.value = false
 }
+
+let drawer = ref(false)
+let toggle = () => {
+    drawer.value = !drawer.value
+}
 </script>
+
 
 <style scoped>
 .links {
@@ -70,11 +103,25 @@ let handleMouseLeave = () => {
     -webkit-backdrop-filter: blur(20px);
 }
 
-.router-link-active {
+.linkParent .router-link-active {
     border-bottom: 3px solid white !important;
 }
 
 .hover {
     border-bottom: 3px solid #D0D6F9;
+}
+
+.mobile {
+    display: none;
+}
+
+@media only screen and (max-width:600px) {
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: inline-block;
+    }
 }
 </style>
