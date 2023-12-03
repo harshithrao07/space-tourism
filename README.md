@@ -58,7 +58,7 @@ Users should be able to:
 - Mobile-first workflow
 - [Vue](https://vuejs.org/) - JS Framework
 - [Nuxt](https://nuxt.com/) - Vue framework
-- [Firebase] (https://firebase.google.com/) - For fetching data from Firestore Database
+- [Firebase](https://firebase.google.com/) - For fetching data from Firestore Database
 - [Vuetify](https://vuetifyjs.com/) - For styled components
 - [Material Design Icons](https://pictogrammers.com/library/mdi/) - For stylish icons
 - [Google Fonts](https://fonts.google.com/) - For fonts
