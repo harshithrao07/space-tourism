@@ -1,6 +1,7 @@
 # Space Tourism 
-https://tourism-space.vercel.app/
 Engaged in the Frontend Mentor Space Tourism Challenge, deploying an immersive webpage using Vue.js and Nuxt.js to create a dynamic and visually striking user interface. Integrated Vuetify for enhanced aesthetics and leveraged Firestore for seamless data storage. Deployed the project on Vercel, ensuring optimal performance and responsiveness. The outcome is a captivating front page inviting users to explore the marvels of outer space through a modern and feature-rich web experience.
+
+https://tourism-space.vercel.app/
 
 ## Tech Stack Used
 
