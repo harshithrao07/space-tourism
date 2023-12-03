@@ -1,75 +1,72 @@
-# Nuxt 3 Minimal Starter
+# Frontend Mentor - Space tourism website solution
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is a solution to the [Space tourism website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/space-tourism-multipage-website-gRWj1URZ3). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Setup
+## Table of contents
 
-Make sure to install the dependencies:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+- [Author](#author)
 
-```bash
-# npm
-npm install
+## Overview
 
-# pnpm
-pnpm install
+### The challenge
 
-# yarn
-yarn install
+Users should be able to:
 
-# bun
-bun install
-```
+- View the optimal layout for each of the website's pages depending on their device's screen size
+- See hover states for all interactive elements on the page
+- View each page and be able to toggle between the tabs to see new information
 
-## Development Server
+### Screenshot
 
-Start the development server on `http://localhost:3000`:
+# Desktop
+![](./assets/screenshots/desktop/desktop_1.png)
+![](./assets/screenshots/desktop/desktop_2.png)
+![](./assets/screenshots/desktop/desktop_3.png)
+![](./assets/screenshots/desktop/desktop_4.png)
 
-```bash
-# npm
-npm run dev
+# Tablet
+![](./assets/screenshots/tablet/tablet_1.png)
+![](./assets/screenshots/tablet/tablet_2.png)
+![](./assets/screenshots/tablet/tablet_3.png)
+![](./assets/screenshots/tablet/tablet_4.png)
 
-# pnpm
-pnpm run dev
+# Mobile
+![](./assets/screenshots/mobile/mobile_1.png)
+![](./assets/screenshots/mobile/mobile%20_2.png)
+![](./assets/screenshots/mobile/mobile_3.png)
+![](./assets/screenshots/mobile/mobile_4.png)
+![](./assets/screenshots/mobile/mobile_5.png)
 
-# yarn
-yarn dev
+### Links
 
-# bun
-bun run dev
-```
+- Live Site URL: https://tourism-space.vercel.app/
 
-## Production
+## My process
 
-Build the application for production:
+### Built with
 
-```bash
-# npm
-npm run build
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- [Vue](https://vuejs.org/) - JS Framework
+- [Nuxt](https://nuxt.com/) - Vue framework
+- [Firebase] (https://firebase.google.com/) - For fetching data from Firestore Database
+- [Vuetify](https://vuetifyjs.com/) - For styled components
+- [Material Design Icons](https://pictogrammers.com/library/mdi/) - For stylish icons
+- [Google Fonts](https://fonts.google.com/) - For fonts
 
-# pnpm
-pnpm run build
+## Author
 
-# yarn
-yarn build
+- Website - Harshith Rao (https://harshithrao.vercel.app/)
+- Github - @harshithrao07 (https://github.com/harshithrao07)
+- Frontend Mentor - @harshithrao07 (https://www.frontendmentor.io/profile/harshithrao07)
 
-# bun
-bun run build
-```
 
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

@@ -14,7 +14,7 @@
                             <NuxtLink :to="item.to" class="links pb-6" :class="{ hover: hoverState && index == hoverStep }"
                                 @mouseover="handleMouseOver(index)" @mouseleave="handleMouseLeave()">
                                 <span class="nav-text">
-                                    <span class="tablet-nav-numbers d-none d-lg-inline">{{ item.id }}&nbsp;&nbsp;</span>{{ item.name }}
+                                    <span class="tablet-nav-numbers">{{ item.id }}&nbsp;&nbsp;</span>{{ item.name }}
                                 </span>
                             </NuxtLink>
                         </div>
@@ -116,7 +116,7 @@ let toggle = () => {
     display: none;
 }
 
-@media only screen and (max-width:1023px) and (min-width:601px){
+@media only screen and (max-width:1300px) and (min-width:601px){
     .tablet-nav-numbers {
         display: none;
     }
