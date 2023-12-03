@@ -3,15 +3,15 @@
         <Navbar />
         <v-container class="mb-16 mt-10 mobile-texts">
             <v-row>
-                <v-col md="12" lg="6" sm="12" xs="12" cols="12">
+                <v-col md="7" lg="6" sm="12" xs="12" cols="12" class="tablet-home-info">
                     <h5>
                         SO, YOU WANT TO TRAVEL TO
                     </h5>
                     <h1>
                         SPACE
                     </h1>
-                    <div class="mr-md-12">
-                        <p>
+                    <div class="mr-md-12 mx-0 mx-sm-16 mx-md-0">
+                        <p class="px-0 px-sm-16 px-md-0">
                             Let’s face it, if you want to go to space, you might as well genuinely go to outer space and not
                             hover
                             kind of on the edge of it. Well sit back, and relax because we’ll give you a truly out of this
@@ -20,11 +20,12 @@
                         </p>
                     </div>
                 </v-col>
-                <v-col class="d-flex align-center justify-center mobile-circle-parent" md="12" lg="6" sm="12" xs="12" cols="12">
+                <v-col class="d-flex align-center justify-center mobile-circle-parent tablet-circle-parent" md="5" lg="6" sm="12" xs="12"
+                    cols="12">
                     <div :class="{ ripple: mouseHover, rippleLeave: mouseLeaveAfterAnimation }">
                         <NuxtLink to="/destinations" style="text-decoration: none;">
-                            <div class="bg-white px-md-6 py-md-16 mobile-circle rounded-circle" @mouseover="handleMouseOver()"
-                                @mouseleave="handleMouseLeave()">
+                            <div class="bg-white px-md-6 py-md-16 mobile-circle tablet-circle rounded-circle"
+                                @mouseover="handleMouseOver()" @mouseleave="handleMouseLeave()">
                                 <h4 class="text-black">EXPLORE</h4>
                             </div>
                         </NuxtLink>
@@ -54,6 +55,7 @@ let handleMouseLeave = () => {
     background-position: 100% 100%;
     background-size: cover;
     min-height: 100vh;
+    background-attachment: fixed;
 }
 
 h5 {
@@ -94,10 +96,42 @@ h5 {
     }
 }
 
+@media only screen and (max-width:1023px) and (min-width:601px){
+    .main-section {
+        background: url("/images/home/background-home-tablet.jpg");
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    .tablet-circle {
+        padding-inline: 65px;
+        padding-block: 100px
+    }
+
+    .tablet-home-info {
+        margin-top: 10vh;
+    }
+
+    .tablet-circle-parent {
+        height: 40vh;
+    }
+
+    .mobile-texts {
+        text-align: center;
+    }
+
+}
+
 
 @media only screen and (max-width:600px) {
     .main-section {
         background: url("/images/home/background-home-mobile.jpg");
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        background-size: cover;
+        background-attachment: fixed;
     }
 
     .mobile-circle {
@@ -107,6 +141,10 @@ h5 {
 
     .mobile-circle-parent {
         height: 200px;
+    }
+
+    .mobile-texts {
+        text-align: center;
     }
 }
 </style>

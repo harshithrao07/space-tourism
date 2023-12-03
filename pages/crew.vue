@@ -2,31 +2,35 @@
     <div class="main-section ma-0">
         <Navbar />
         <v-container class="mt-10 pa-0 mobile-texts">
-            <h5><span class="numbers">02</span>&nbsp;&nbsp;MEET YOUR CREW</h5>
-            <v-row v-if="selectedCrew">
-                <v-col class="pa-0 mt-10 mt-md-0" cols="12" xs="12" sm="12" md="5" lg="5" order-md="2">
-                    <v-img :src="selectedCrew.image" class="mx-auto crew-image"></v-img>
-                    <v-divider thickness="2" class="d-md-none mx-9"></v-divider>
+            <h5 class="ml-0 ml-sm-7 ml-md-0"><span class="numbers">02</span>&nbsp;&nbsp;MEET YOUR CREW</h5>
+            <v-row v-if="selectedCrew" class="tablet-texts">
+                <v-col class="pa-0 mt-10 mt-sm-16 mt-md-0 tablet-crew-image-parent" cols="12" xs="12" sm="12" md="5" lg="5"
+                    order-sm="2">
+                    <v-img :src="selectedCrew.image" class="mx-auto crew-image" />
+                    <v-divider thickness="2" class="d-sm-none mx-9"></v-divider>
                 </v-col>
                 <v-col class="d-flex flex-column justify-center px-8 px-md-3" cols="12" xs="12" sm="12" md="7" lg="7"
-                    order-md="1">
+                    order-sm="1">
                     <v-row class="mt-5 mt-md-16" order-md="2">
                         <v-col cols="12" order-md="2" class="mt-0">
                             <v-row class="mobile-links">
-                                <v-col cols="2" md="1" v-for="(item, index) in crew" :key="index" @click="setActiveStep(index)" class="pa-0 pl-5">
+                                <v-col order-lg="2" cols="1" sm="1" md="1" v-for="(item, index) in crew" :key="index"
+                                    @click="setActiveStep(index)" class="pa-0 ml-3 ml-sm-0 pl-sm-5">
                                     <v-img v-if="activeStep == index" src="/images/crew/Oval.svg" width="50%"
                                         style="cursor: pointer;"></v-img>
                                     <v-img v-else :src="getOvalSource(index)" style="cursor: pointer;"
-                                        @mouseover="handleMouseOver(index)" @mouseleave="handleMouseLeave()" width="50%"></v-img>
+                                        @mouseover="handleMouseOver(index)" @mouseleave="handleMouseLeave()"
+                                        width="50%"></v-img>
+                                </v-col>
+                                <v-col order-sm="1" cols="12" order-lg="1"
+                                    class="mb-md-8 d-flex flex-column justify-center mt-3 mt-md-0">
+                                    <h4 class="mb-0 my-md-5 mobile-text-1">{{ selectedCrew.role.toLocaleUpperCase() }}</h4>
+                                    <h3 class="mb-5 mobile-text-2">{{ selectedCrew.name.toLocaleUpperCase() }}</h3>
+                                    <p class="mt-3 mt-md-5 mb-10 mb-md-0 pr-md-16 px-0 px-sm-16 px-md-0">
+                                        {{ selectedCrew.bio }}
+                                    </p>
                                 </v-col>
                             </v-row>
-                        </v-col>
-                        <v-col cols="12" order-md="1" class="mb-md-8 d-flex flex-column justify-center mt-3 mt-md-0">
-                            <h4 class="mb-0 my-md-5 mobile-text-1">{{ selectedCrew.role.toLocaleUpperCase() }}</h4>
-                            <h3 class="mb-5 mobile-text-2">{{ selectedCrew.name.toLocaleUpperCase() }}</h3>
-                            <p class="mt-3 mt-md-5 mb-10 mb-md-0 pr-md-16">
-                                {{ selectedCrew.bio }}
-                            </p>
                         </v-col>
                     </v-row>
                 </v-col>
@@ -39,25 +43,25 @@
 let crew = [
     {
         "name": "Douglas Hurley",
-        "image": "./images/crew/image-douglas-hurley.png",
+        "image": "./images/crew/image-douglas-hurley.webp",
         "role": "Commander",
         "bio": "Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2."
     },
     {
         "name": "Mark Shuttleworth",
-        "image": "./images/crew/image-mark-shuttleworth.png",
+        "image": "./images/crew/image-mark-shuttleworth.webp",
         "role": "Mission Specialist",
         "bio": "Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind the Linux-based Ubuntu operating system. Shuttleworth became the first South African to travel to space as a space tourist."
     },
     {
         "name": "Victor Glover",
-        "image": "./images/crew/image-victor-glover.png",
+        "image": "./images/crew/image-victor-glover.webp",
         "role": "Pilot",
         "bio": "Pilot on the first operational flight of the SpaceX Crew Dragon to the International Space Station. Glover is a commander in the U.S. Navy where he pilots an F/A-18.He was a crew member of Expedition 64, and served as a station systems flight engineer."
     },
     {
         "name": "Anousheh Ansari",
-        "image": "./images/crew/image-anousheh-ansari.png",
+        "image": "./images/crew/image-anousheh-ansari.webp",
         "role": "Flight Engineer",
         "bio": "Anousheh Ansari is an Iranian American engineer and co-founder of Prodea Systems. Ansari was the fourth self-funded space tourist, the first self-funded woman to fly to the ISS, and the first Iranian in space."
     }
@@ -66,7 +70,7 @@ let crew = [
 let selectedCrew = ref(
     {
         "name": "Douglas Hurley",
-        "image": "./images/crew/image-douglas-hurley.png",
+        "image": "./images/crew/image-douglas-hurley.webp",
         "role": "Commander",
         "bio": "Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2."
     }
@@ -104,13 +108,52 @@ let getOvalSource = (index) => {
     background-repeat: no-repeat;
     background-position: 100% 100%;
     background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
 }
 
 h4 {
     color: gray;
 }
 
+@media only screen and (max-width:1023px) and (min-width:601px) {
+
+    .main-section {
+        background: url("/images/crew/background-crew-tablet.jpg");
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        background-size: cover;
+        background-attachment: fixed;
+        height: 100vh;
+    }
+
+    .tablet-crew-image-parent {
+        display: flex;
+    }
+
+    .tablet-texts {
+        text-align: center;
+    }
+
+    .crew-image {
+        padding: 50%;
+    }
+
+    .mobile-links {
+        display: flex;
+        justify-content: center;
+    }
+}
+
 @media only screen and (max-width:600px) {
+    .main-section {
+        background: url("/images/crew/background-crew-mobile.jpg");
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
     .mobile-texts {
         text-align: center;
     }
@@ -131,5 +174,4 @@ h4 {
         display: flex;
         justify-content: center;
     }
-}
-</style>
+}</style>

@@ -1,20 +1,20 @@
 <template>
     <div class="desktop">
-        <nav class="mt-10">
-            <v-row class="my-5 pa-0">
-                <v-col class="d-flex align-center justify-space-between pa-0 ml-16">
+        <nav class="mt-0 mt-md-10">
+            <v-row class="my-0 my-md-5 pa-0">
+                <v-col class="d-flex align-center justify-space-between pa-0 pl-8 pl-md-0 ml-md-16">
                     <NuxtLink to="/"><img src="/images/navbar/logo.svg" /></NuxtLink>
-                    <div class="w-50 desktop">
+                    <div class="w-50 desktop tablet-nav-numbers">
                         <v-divider thickness="2"></v-divider>
                     </div>
                 </v-col>
                 <v-col class="pa-0">
-                    <div class="nav-blur d-flex align-center">
-                        <div v-for="(item, index) in navItems" :key="index" class="py-6 mx-10 linkParent desktop">
+                    <div class="nav-blur d-flex align-center pl-3 pl-md-0">
+                        <div v-for="(item, index) in navItems" :key="index" class="py-6 mx-3 mx-md-5 mx-lg-10 linkParent desktop">
                             <NuxtLink :to="item.to" class="links pb-6" :class="{ hover: hoverState && index == hoverStep }"
                                 @mouseover="handleMouseOver(index)" @mouseleave="handleMouseLeave()">
                                 <span class="nav-text">
-                                    {{ item.id }}&nbsp;&nbsp;{{ item.name }}
+                                    <span class="tablet-nav-numbers d-none d-lg-inline">{{ item.id }}&nbsp;&nbsp;</span>{{ item.name }}
                                 </span>
                             </NuxtLink>
                         </div>
@@ -34,6 +34,7 @@
             </div>
         </nav>
     </div>
+    
     <v-navigation-drawer app temporary v-model="drawer" class="nav-blur" location="right">
         <v-container>
             <v-img src="/images/navbar/icon-close.svg" width="12%" class="ml-auto" @click.stop="toggle()"></v-img>
@@ -113,6 +114,12 @@ let toggle = () => {
 
 .mobile {
     display: none;
+}
+
+@media only screen and (max-width:1023px) and (min-width:601px){
+    .tablet-nav-numbers {
+        display: none;
+    }
 }
 
 @media only screen and (max-width:600px) {
