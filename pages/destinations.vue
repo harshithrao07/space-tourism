@@ -1,7 +1,7 @@
 <template>
-    <div class="main-section">
+    <div class="main-section" style="display: flex; flex-direction: column;">
         <Navbar />
-        <v-container class="my-10">
+        <v-container class="my-10" style="flex: 1;">
             <h5><span class="numbers">01</span>&nbsp;&nbsp;PICK YOUR DESTINATION</h5>
 
             <v-row v-if="selectedDestination" class="pa-3 mt-3 mt-md-16 mobile-texts">
@@ -48,6 +48,7 @@
                 </v-col>
             </v-row>
         </v-container>
+        <Footer />
     </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
-    <div class="main-section ma-0">
+    <div class="main-section ma-0" style="display: flex; flex-direction: column;">
         <Navbar />
-        <v-container class="mt-10 pa-0 mobile-texts">
+        <v-container class="mt-10 pa-0 mobile-texts" style="flex: 1;">
             <h5 class="ml-0 ml-sm-7 ml-md-0"><span class="numbers">02</span>&nbsp;&nbsp;MEET YOUR CREW</h5>
             <v-row v-if="selectedCrew" class="tablet-texts">
                 <v-col class="pa-0 mt-10 mt-sm-16 mt-md-0 tablet-crew-image-parent" cols="12" xs="12" sm="12" md="5" lg="5"
@@ -36,6 +36,7 @@
                 </v-col>
             </v-row>
         </v-container>
+        <Footer />
     </div>
 </template>
 

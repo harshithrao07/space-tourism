@@ -1,7 +1,7 @@
 <template>
-    <v-container fluid class="main-section pa-0 ma-0">
+    <v-container fluid class="main-section pa-0 ma-0" style="display: flex; flex-direction: column;">
         <Navbar />
-        <v-container class="mb-16 mt-10 mobile-texts">
+        <v-container class="mb-16 mt-10 mobile-texts" style="flex: 1;">
             <v-row>
                 <v-col md="7" lg="6" sm="12" xs="12" cols="12" class="tablet-home-info">
                     <h5>
@@ -33,6 +33,7 @@
                 </v-col>
             </v-row>
         </v-container>
+        <Footer />
     </v-container>
 </template>
 

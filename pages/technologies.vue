@@ -1,7 +1,7 @@
 <template>
-  <div class="main-section">
+  <div class="main-section" style="display: flex; flex-direction: column;">
     <Navbar />
-    <v-container fluid class="mb-16 mt-10 mt-md-16 pa-2 pa-md-0 mobile-texts">
+    <v-container fluid class="mb-16 mt-10 mt-md-16 pa-2 pa-md-0 mobile-texts" style="flex: 1;">
       <h5 class="ml-md-16 mb-10 mb-md-0"><span class="numbers ml-md-16">03</span>&nbsp;&nbsp;SPACE LAUNCH 101</h5>
       <v-row v-if="selectedTechnology">
         <v-col cols="12" order-md="3" md="5" class="pa-0">
@@ -35,6 +35,7 @@
         </v-col>
       </v-row>
     </v-container>
+    <Footer />
   </div>
 </template>
 
