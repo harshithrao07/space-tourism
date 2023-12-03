@@ -41,45 +41,22 @@
 </template>
 
 <script setup>
-let crew = [
-    {
-        "name": "Douglas Hurley",
-        "image": "./images/crew/image-douglas-hurley.webp",
-        "role": "Commander",
-        "bio": "Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2."
-    },
-    {
-        "name": "Mark Shuttleworth",
-        "image": "./images/crew/image-mark-shuttleworth.webp",
-        "role": "Mission Specialist",
-        "bio": "Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind the Linux-based Ubuntu operating system. Shuttleworth became the first South African to travel to space as a space tourist."
-    },
-    {
-        "name": "Victor Glover",
-        "image": "./images/crew/image-victor-glover.webp",
-        "role": "Pilot",
-        "bio": "Pilot on the first operational flight of the SpaceX Crew Dragon to the International Space Station. Glover is a commander in the U.S. Navy where he pilots an F/A-18.He was a crew member of Expedition 64, and served as a station systems flight engineer."
-    },
-    {
-        "name": "Anousheh Ansari",
-        "image": "./images/crew/image-anousheh-ansari.webp",
-        "role": "Flight Engineer",
-        "bio": "Anousheh Ansari is an Iranian American engineer and co-founder of Prodea Systems. Ansari was the fourth self-funded space tourist, the first self-funded woman to fly to the ISS, and the first Iranian in space."
-    }
-]
+import { getData, getImage } from '~/firebase';
+
+let crew = ref([])
 
 let selectedCrew = ref(
     {
-        "name": "Douglas Hurley",
-        "image": "./images/crew/image-douglas-hurley.webp",
-        "role": "Commander",
-        "bio": "Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2."
+        name: "",
+        image: "",
+        role: "",
+        bio: ""
     }
 )
 let activeStep = ref(0)
 let setActiveStep = (stepNumber) => {
     activeStep.value = stepNumber
-    selectedCrew.value = crew[stepNumber]
+    selectedCrew.value = crew.value[stepNumber]
 }
 
 let hoverState = ref(false)
@@ -101,6 +78,22 @@ let hoverOval = "/images/crew/Oval-hover.svg"
 let getOvalSource = (index) => {
     return hoverStep.value === index ? hoverOval : grayOval;
 }
+
+onMounted(async() => {
+    try{
+        const data = await getData("crew")
+        crew.value = await Promise.all(data.map(async(person) => {
+            return {
+                ...person,
+                image: await getImage(`crew/image-${person.name.toLowerCase().replace(/\s+/g, '-')}.webp`)
+            }
+        }))
+        setActiveStep(0);
+    } catch(error) {
+        throw error
+    }
+})
+
 </script>
 
 <style scoped>

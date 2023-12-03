@@ -28,9 +28,9 @@
                             </div>
                         </v-col>
                     </v-row>
-                    <v-row>
+                    <v-row v-if="selectedDestination">
                         <div class="info-texts">
-                            <h2 class="mt-3 mt-md-0">{{ selectedDestination.name.toLocaleUpperCase() }}</h2>
+                            <h2 class="mt-3 mt-md-0" v-if="selectedDestination.name">{{ selectedDestination.name.toLocaleUpperCase() }}</h2>
                             <p class="pr-md-16 mt-3 mt-md-0">{{ selectedDestination.description }}</p>
                             <v-divider class="mt-12" thickness="2"></v-divider>
                             <v-row class="mt-6 mt-md-0 mt-lg-6">
@@ -53,52 +53,23 @@
 </template>
 
 <script setup>
-let destinations = [
-    {
-        "name": "Moon",
-        "image": "./images/destination/image-moon.webp",
-        "description": "See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.",
-        "distance": "384,400 km",
-        "travel": "3 days"
-    },
-    {
-        "name": "Mars",
-        "image": "./images/destination/image-mars.webp",
-        "description": "Don’t forget to pack your hiking boots. It has some of the tallest volcanoes in the solar system. You’ll need them to tackle Olympus Mons, the tallest planetary mountain in our solar system. It’s two and a half times the size of Everest!",
-        "distance": "225 mil. km",
-        "travel": "9 months"
-    },
-    {
-        "name": "Europa",
-        "image": "./images/destination/image-europa.webp",
-        "description": "The smallest of the four Galilean moons orbiting Jupiter, Europa is a winter lover’s dream. With an icy surface, it’s perfect for a bit of ice skating, curling, hockey, or simple relaxation in your snug wintery cabin.",
-        "distance": "628 mil. km",
-        "travel": "3 years"
-    },
-    {
-        "name": "Titan",
-        "image": "./images/destination/image-titan.webp",
-        "description": "Titan's name comes from Greek mythology. The only moon known to have a dense atmosphere other than Earth, Titan is a home away from home (just a few hundred degrees colder!). As a bonus, you get striking views of the Rings of Saturn.",
-        "distance": "1.6 bil. km",
-        "travel": "7 years"
-    }
-]
+import { getData, getImage } from "~/firebase"
 
-let selectedDestination = ref(
-    {
-        "name": "Moon",
-        "image": "./images/destination/image-moon.webp",
-        "description": "See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.",
-        "distance": "384,400 km",
-        "travel": "3 days"
-    }
-)
+let destinations = ref([])
+
+let selectedDestination = ref({
+  name: '',
+  image: '',
+  description: '',
+  distance: '',
+  travel: '',
+});
 
 let activeStep = ref(0)
 
 let setActiveStep = (stepNumber) => {
     activeStep.value = stepNumber
-    selectedDestination.value = destinations[stepNumber];
+    selectedDestination.value = destinations.value[stepNumber];
 }
 
 let mouseHover = ref(false)
@@ -112,6 +83,21 @@ let handleMouseOver = (index) => {
 let handleMouseLeave = () => {
     mouseHover.value = false
 }
+
+onMounted(async () => {
+    try{
+        const data = await getData("destinations");
+        destinations.value = await Promise.all(data.map(async (destination) => {
+            return {
+                ...destination,
+                image: await getImage(`destinations/image-${destination.name}.webp`)
+            };
+        }));
+        setActiveStep(0);
+    } catch (error) {
+        throw error
+    }
+})
 </script>
 
 <style scoped>
