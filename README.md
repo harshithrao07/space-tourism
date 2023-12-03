@@ -60,6 +60,7 @@ Users should be able to:
 - [Nuxt](https://nuxt.com/) - Vue framework
 - [Firebase](https://firebase.google.com/) - For fetching data from Firestore Database
 - [Vuetify](https://vuetifyjs.com/) - For styled components
+- [Vercel](https://vercel.com/) - For hosting the website
 - [Material Design Icons](https://pictogrammers.com/library/mdi/) - For stylish icons
 - [Google Fonts](https://fonts.google.com/) - For fonts
 
