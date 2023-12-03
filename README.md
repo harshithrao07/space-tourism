@@ -32,14 +32,11 @@ Users should be able to:
 
 # Tablet
 ![](./assets/screenshots/tablet/tablet_1.png)
-![](./assets/screenshots/tablet/tablet_2.png)
-![](./assets/screenshots/tablet/tablet_3.png)
 ![](./assets/screenshots/tablet/tablet_4.png)
 
 # Mobile
 ![](./assets/screenshots/mobile/mobile_1.png)
 ![](./assets/screenshots/mobile/mobile%20_2.png)
-![](./assets/screenshots/mobile/mobile_3.png)
 ![](./assets/screenshots/mobile/mobile_4.png)
 ![](./assets/screenshots/mobile/mobile_5.png)
 
