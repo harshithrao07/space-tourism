@@ -1,6 +1,6 @@
 # Space Tourism 
 
-This is a solution to the [Space tourism website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/space-tourism-multipage-website-gRWj1URZ3). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+Engaged in the Frontend Mentor Space Tourism Challenge, deploying an immersive webpage using Vue.js and Nuxt.js to create a dynamic and visually striking user interface. Integrated Vuetify for enhanced aesthetics and leveraged Firestore for seamless data storage. Deployed the project on Vercel, ensuring optimal performance and responsiveness. The outcome is a captivating front page inviting users to explore the marvels of outer space through a modern and feature-rich web experience.
 
 ## Table of contents
 
