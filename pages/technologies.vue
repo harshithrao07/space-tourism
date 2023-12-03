@@ -3,7 +3,7 @@
     <Navbar />
     <v-container fluid class="mb-16 mt-10 mt-md-16 pa-2 pa-md-0 mobile-texts" style="flex: 1;">
       <h5 class="ml-md-16 mb-10 mb-md-0"><span class="numbers ml-md-16">03</span>&nbsp;&nbsp;SPACE LAUNCH 101</h5>
-      <v-row v-if="selectedTechnology">
+      <v-row v-if="selectedTechnology.name">
         <v-col cols="12" order-md="3" md="5" class="pa-0">
           <v-img class="desktop" :src="selectedTechnology.images.portrait"></v-img>
           <v-img class="mobile-tablet" :src="selectedTechnology.images.landscape"></v-img>
@@ -33,6 +33,9 @@
             <p class="mr-md-16 px-0 px-sm-16 px-md-0">{{ selectedTechnology.description }}</p>
           </div>
         </v-col>
+      </v-row>
+      <v-row v-else class="mt-16 d-flex align-center justify-center">
+        <h5>Loading...</h5>
       </v-row>
     </v-container>
     <Footer />

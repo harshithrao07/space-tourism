@@ -3,7 +3,7 @@
         <Navbar />
         <v-container class="mt-10 pa-0 mobile-texts" style="flex: 1;">
             <h5 class="ml-0 ml-sm-7 ml-md-0"><span class="numbers">02</span>&nbsp;&nbsp;MEET YOUR CREW</h5>
-            <v-row v-if="selectedCrew" class="tablet-texts">
+            <v-row v-if="selectedCrew.name" class="tablet-texts">
                 <v-col class="pa-0 mt-10 mt-sm-16 mt-md-0 tablet-crew-image-parent" cols="12" xs="12" sm="12" md="5" lg="5"
                     order-sm="2">
                     <v-img :src="selectedCrew.image" class="mx-auto crew-image" />
@@ -34,6 +34,9 @@
                         </v-col>
                     </v-row>
                 </v-col>
+            </v-row>
+            <v-row v-else class="mt-16 pl-5 d-flex align-center justify-center">
+                <h5>Loading...</h5>
             </v-row>
         </v-container>
         <Footer />

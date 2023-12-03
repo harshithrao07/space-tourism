@@ -3,8 +3,7 @@
         <Navbar />
         <v-container class="my-10" style="flex: 1;">
             <h5><span class="numbers">01</span>&nbsp;&nbsp;PICK YOUR DESTINATION</h5>
-
-            <v-row v-if="selectedDestination" class="pa-3 mt-3 mt-md-16 mobile-texts">
+            <v-row v-if="selectedDestination.name" class="pa-3 mt-3 mt-md-16 mobile-texts">
                 <v-col cols="12" md="6" sm="12" class="d-inline d-md-flex d-lg-inline">
                     <v-img :src="selectedDestination.image" width="85%" class="mobile-image my-auto"></v-img>
                 </v-col>
@@ -32,8 +31,8 @@
                         <div class="info-texts">
                             <h2 class="mt-3 mt-md-0" v-if="selectedDestination.name">{{ selectedDestination.name.toLocaleUpperCase() }}</h2>
                             <p class="pr-md-16 mt-3 mt-md-0">{{ selectedDestination.description }}</p>
-                            <v-divider class="mt-12" thickness="2"></v-divider>
-                            <v-row class="mt-6 mt-md-0 mt-lg-6">
+                            <v-divider class="mt-12 mt-sm-0 mt-md-12 d-flex d-sm-none d-md-flex" thickness="2"></v-divider>
+                            <v-row class="mt-6 mt-sm-0 mt-md-0 mt-lg-6">
                                 <v-col class="d-flex flex-column" cols="12" md="6" sm="6">
                                     <span class="subheading-2">AVG. DISTANCE</span>
                                     <span class="subheading-1">{{ selectedDestination.distance.toLocaleUpperCase() }}</span>
@@ -46,6 +45,9 @@
                         </div>
                     </v-row>
                 </v-col>
+            </v-row>
+            <v-row v-else class="mt-16 d-flex justify-center align-center">
+                <h5>Loading...</h5>
             </v-row>
         </v-container>
         <Footer />
